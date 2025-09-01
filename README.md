@@ -28,8 +28,6 @@ app/
 ├── activity_register.xml  
 ├── activity_main.xml  
   
-markdown
-Copiar código
 
 ---
 
