@@ -80,4 +80,4 @@ app/
 
 ## 👨‍💻 Autor
 **Marcus Vinicius Garcia Alves**  
-[LinkedIn]([https://www.linkedin.com/](https://www.linkedin.com/in/marcus-vinicius-garcia-alves/)) | [GitHub]([https://github.com/](https://github.com/mvgalves))
+[LinkedIn]([https://www.linkedin.com/](https://www.linkedin.com/in/marcus-vinicius-garcia-alves/)) | [GitHub]((https://github.com/mvgalves))
