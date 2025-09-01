@@ -39,12 +39,12 @@ class LoginActivity : AppCompatActivity() {
 
         editEmail = findViewById(R.id.editTextEmail)
         editPassword = findViewById(R.id.editTextpassword)
-        btnLogin = findViewById(R.id.button)
-        btnCreateAccount = findViewById(R.id.button2)
+        btnLogin = findViewById(R.id.buttonLogin)
+        btnCreateAccount = findViewById(R.id.buttonRegister)
         txtForgotPassword = findViewById(R.id.forgotpassword)
         eyeLoginPassword = findViewById(R.id.eyeloginpassword)
 
-        // 🔹 Listener do botão de login
+        // Verificação ao clicar no botão de login
         btnLogin.setOnClickListener {
             val input = editEmail.text.toString().trim() // pode ser email ou username
             val password = editPassword.text.toString().trim()
@@ -55,11 +55,10 @@ class LoginActivity : AppCompatActivity() {
                 val sharedPrefs = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
                 var email: String? = null
 
-                // 1️⃣ Verifica se input é email existente
+
                 if (sharedPrefs.contains(input)) {
                     email = input
                 } else {
-                    // 2️⃣ Tenta buscar por username
                     val allEntries = sharedPrefs.all
                     for ((key, value) in allEntries) {
                         if (key.startsWith("username_") && value == input) {
@@ -70,10 +69,8 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 if (email == null) {
-                    // email ou username incorretos
                     Toast.makeText(this, "Email ou nome de usuário incorretos", Toast.LENGTH_SHORT).show()
                 } else {
-                    // 3️⃣ Verifica senha
                     val savedPassword = sharedPrefs.getString(email, null)
                     if (savedPassword == password) {
                         sharedPrefs.edit().putString("active_user", email).apply()
@@ -88,18 +85,18 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // 🔹 Botão "Criar uma conta"
+        // Botão "Criar uma conta"
         btnCreateAccount.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
-        // 🔹 Texto "Esqueci minha senha"
+        // Texto "Esqueci minha senha"
         txtForgotPassword.setOnClickListener {
             Toast.makeText(this, "Ainda estamos implementando esta funcionalidade", Toast.LENGTH_SHORT).show()
         }
 
-        // 🔹 Toggle visibilidade da senha
+        // Toggle visibilidade da senha
         eyeLoginPassword.setOnClickListener {
             if (isPasswordVisible) {
                 editPassword.transformationMethod = PasswordTransformationMethod.getInstance()

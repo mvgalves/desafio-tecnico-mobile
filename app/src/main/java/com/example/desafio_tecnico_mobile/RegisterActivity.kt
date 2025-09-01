@@ -34,14 +34,14 @@ class RegisterActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_register)
 
-        // Ajuste de padding para sistema de barras
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.register)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Inicializando campos
+
         editUsername = findViewById(R.id.editTextText3)
         editEmail = findViewById(R.id.editTextText4)
         editPassword = findViewById(R.id.editTextText5)
@@ -51,14 +51,14 @@ class RegisterActivity : AppCompatActivity() {
         eyeRegisterPassword = findViewById(R.id.eyeregisterpassword)
         eyeConfirm = findViewById(R.id.eyeconfirm)
 
-        // Listener do botão de cadastro
+
         btnRegister.setOnClickListener {
             val username = editUsername.text.toString().trim()
             val email = editEmail.text.toString().trim()
             val password = editPassword.text.toString().trim()
             val confirmPassword = editConfirmPassword.text.toString().trim()
 
-            // Validações
+            // Verificação ao clicar no botão de Entrar
             if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
             } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -79,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
                 // Verifica se o nome de usuário já está cadastrado
                 val allEntries = sharedPrefs.all
                 if (allEntries.values.any { it == username }) {
-                    Toast.makeText(this, "Nome de usuário já está em uso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Usuário já cadastrado com este nome", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
@@ -98,14 +98,14 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        // Listener do TextView "Login"
+
         txtClickToLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish() // Fecha o RegisterActivity para não acumular na pilha
         }
 
-        // 🔹 Toggle da senha principal
+
         eyeRegisterPassword.setOnClickListener {
             if (isPasswordVisible) {
                 editPassword.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -117,7 +117,7 @@ class RegisterActivity : AppCompatActivity() {
             editPassword.setSelection(editPassword.text.length)
         }
 
-        // 🔹 Toggle da confirmação de senha
+
         eyeConfirm.setOnClickListener {
             if (isConfirmVisible) {
                 editConfirmPassword.transformationMethod = PasswordTransformationMethod.getInstance()

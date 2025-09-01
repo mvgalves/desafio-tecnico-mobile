@@ -30,24 +30,22 @@ class MainActivity : AppCompatActivity() {
         val userName = sharedPrefs.getString("username_$userEmail", "Usuário")
 
 
-        // Pegando referências dos TextViews corretos
-        val textWelcome = findViewById<TextView>(R.id.textView18) // "Bem vindo"
+        // Pegando referências
         val textUserName = findViewById<TextView>(R.id.nameuser)  // Nome do usuário
         val textUserEmail = findViewById<TextView>(R.id.emailuser) // Email
 
         // Atualizando interface
-        textWelcome.text = "Bem vindo"
         textUserName.text = userName
         textUserEmail.text = userEmail
 
-        // 🔹 Botão de Deslogar
+        // Botão de Deslogar
         val btnLogout = findViewById<Button>(R.id.deslogar)
         btnLogout.setOnClickListener {
             val editor = sharedPrefs.edit()
             editor.remove("active_user") // remove usuário ativo
             editor.apply()
 
-            // Volta para tela de login limpando a pilha
+            // Volta para tela de login
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
