@@ -33,13 +33,13 @@ app/
 
 ## 🖼️ Funcionalidades
 
-### 🔵 Splash Screen
+### Splash Screen
 - Exibe logotipo e nome do app por alguns segundos.
 - Redireciona automaticamente para a tela correta:
   - Vai para **Login** se não houver usuário logado.
   - Vai para **Tela Principal** se já houver sessão ativa.
 
-### 🟣 Tela de Login
+### Tela de Login
 - Campos de **usuário/e-mail** e **senha**.
 - Botão **Entrar**.
 - Botão **Criar conta**.
@@ -51,7 +51,7 @@ app/
   - Alternar visibilidade da senha (ícone olho).
   - Link "Esqueci minha senha" (apenas ilustrativo).
 
-### 🟢 Tela de Cadastro
+### Tela de Cadastro
 - Campos para **nome de usuário, e-mail, senha e confirmação de senha**.
 - Botão **Cadastrar**.
 - Validações:
@@ -62,9 +62,8 @@ app/
   - Não permite cadastrar usuário ou e-mail duplicado.
 - Após cadastro, retorna para a tela de login.
 
-### 🟠 Tela Principal
+### Tela Principal
 - Exibe dados do usuário logado (**nome e e-mail**).
-- Mensagem de boas-vindas personalizada.
 - Botão **Deslogar**:
   - Apaga a sessão ativa.
   - Retorna para a tela de login.
@@ -79,28 +78,6 @@ app/
 
 ---
 
-## ✅ Critérios do Desafio Atendidos
-- [x] Splash Screen funcional.
-- [x] Tela de Login com validações.
-- [x] Tela de Cadastro com validações.
-- [x] Tela Principal exibindo informações do usuário.
-- [x] Persistência local com SharedPreferences.
-- [x] Estado de login mantido até logout.
-- [x] Layout simples e funcional (UI/UX consistente).
-- [x] Código organizado e claro.
-
----
-
-## 📸 Demonstração (opcional)
-👉 Você pode adicionar prints das telas aqui para deixar o README mais visual:
-
-- Splash  
-- Login  
-- Cadastro  
-- Tela Principal  
-
----
-
 ## 👨‍💻 Autor
 **Seu Nome Aqui**  
-[LinkedIn](https://www.linkedin.com/) | [GitHub](https://github.com/)
+[LinkedIn]([https://www.linkedin.com/](https://www.linkedin.com/in/marcus-vinicius-garcia-alves/)) | [GitHub]([https://github.com/](https://github.com/mvgalves))
