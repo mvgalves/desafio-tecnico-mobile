@@ -1,47 +1,57 @@
 package com.example.desafio_tecnico_mobile
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.desafio_tecnico_mobile.ui.theme.DesafiotecnicomobileTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            DesafiotecnicomobileTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        // Pegando email vindo do LoginActivity
+        val userEmail = intent.getStringExtra("USER_EMAIL")
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DesafiotecnicomobileTheme {
-        Greeting("Android")
+        // Buscando nome salvo no SharedPreferences
+        val sharedPrefs = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val userName = sharedPrefs.getString("username_$userEmail", "Usuário")
+
+
+        // Pegando referências dos TextViews corretos
+        val textWelcome = findViewById<TextView>(R.id.textView18) // "Bem vindo"
+        val textUserName = findViewById<TextView>(R.id.nameuser)  // Nome do usuário
+        val textUserEmail = findViewById<TextView>(R.id.emailuser) // Email
+
+        // Atualizando interface
+        textWelcome.text = "Bem vindo"
+        textUserName.text = userName
+        textUserEmail.text = userEmail
+
+        // 🔹 Botão de Deslogar
+        val btnLogout = findViewById<Button>(R.id.deslogar)
+        btnLogout.setOnClickListener {
+            val editor = sharedPrefs.edit()
+            editor.remove("active_user") // remove usuário ativo
+            editor.apply()
+
+            // Volta para tela de login limpando a pilha
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
     }
 }
