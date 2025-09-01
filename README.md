@@ -16,18 +16,18 @@ O objetivo é criar um aplicativo Android simples, funcional e bem estruturado, 
 ## 📂 Estrutura do Projeto
 
 app/
-├── java/com/example/desafio_tecnico_mobile/
-│ ├── SplashScreen.kt # Tela de abertura (Splash)
-│ ├── LoginActivity.kt # Tela de Login
-│ ├── RegisterActivity.kt # Tela de Cadastro
-│ ├── MainActivity.kt # Tela Principal
-│
-└── res/layout/
-├── activity_splash_screen.xml
-├── activity_login.xml
-├── activity_register.xml
-├── activity_main.xml
-
+├── java/com/example/desafio_tecnico_mobile/  
+│ ├── SplashScreen.kt # Tela de abertura (Splash)  
+│ ├── LoginActivity.kt # Tela de Login  
+│ ├── RegisterActivity.kt # Tela de Cadastro  
+│ ├── MainActivity.kt # Tela Principal  
+│  
+└── res/layout/  
+├── activity_splash_screen.xml  
+├── activity_login.xml  
+├── activity_register.xml  
+├── activity_main.xml  
+  
 markdown
 Copiar código
 
